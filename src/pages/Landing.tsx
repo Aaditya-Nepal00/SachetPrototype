@@ -14,58 +14,75 @@ export function Landing() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#2563EB] to-[#3B82F6] text-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h50v50H0z' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")`,
-            backgroundSize: '50px 50px'
-          }} />
-        </div>
-        
-        {/* Nepal Map Glow Effect */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-96 h-96 group">
-            <div className="absolute inset-0 rounded-full bg-white/20 blur-3xl animate-glow group-hover:animate-none"></div>
-            <div className="absolute inset-8 rounded-full bg-white/10 blur-2xl animate-glow group-hover:animate-none" style={{ animationDelay: '1s' }}></div>
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
-              {/* Simplified Nepal Shape */}
-              <path d="M200 50 L250 80 L280 120 L290 180 L280 240 L250 280 L200 300 L150 280 L120 240 L110 180 L120 120 L150 80 Z" 
-                    stroke="white" strokeWidth="3" fill="rgba(255,255,255,0.1)" className="animate-pulse group-hover:animate-none" />
-            </svg>
-          </div>
-        </div>
+      <section className="relative overflow-hidden text-white min-h-[90vh] md:min-h-screen flex items-center">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/heropage/HeroVideo.mp4" type="video/mp4" />
+          {/* Fallback gradient if video doesn't load */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A] via-[#2563EB] to-[#3B82F6]"></div>
+        </video>
 
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <div className="flex flex-col items-center justify-center w-full -mt-8 md:-mt-12">
-              <div className="flex items-center justify-center mb-4">
-                <img 
-                  src="/logoFolder/logo.png" 
-                  alt="Sachet Logo" 
-                  className="h-32 w-32 md:h-48 md:w-48 lg:h-56 lg:w-56 object-contain drop-shadow-2xl mx-auto"
-                />
+        {/* Dark Overlay Layer */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
+
+        {/* Content */}
+        <div className="relative z-20 container mx-auto px-4 py-12 md:py-20">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Logo */}
+            <div className="flex flex-col items-center justify-center mb-6 md:mb-8">
+              <div className="flex items-center justify-center">
               </div>
             </div>
-            <p className="text-2xl md:text-3xl font-light text-blue-100">
-              A Modern Transparency Platform for Nepali Governance
+
+            {/* Main Heading */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
+              A Modern Transparency Platform
+            </h1>
+            
+            {/* Subtitle */}
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/90 mb-4 md:mb-6 drop-shadow-md">
+              for Nepali Governance
             </p>
-            <p className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto">
+
+            {/* Description */}
+            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 drop-shadow-md px-4">
               Empowering citizens with real-time project tracking, budget transparency, 
               and anonymous corruption reporting. Building trust through accountability.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4 pt-8">
-              <Button asChild size="lg" className="bg-white text-[#1E3A8A] hover:bg-blue-50 border-0">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 px-4">
+              <Button 
+                asChild 
+                size="lg" 
+                className="bg-white text-[#1E3A8A] hover:bg-blue-50 border-0 shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
+              >
                 <Link to="/projects">
-                  Explore Projects <ArrowRight className="ml-2 h-5 w-5" />
+                  Explore Projects <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent">
+              <Button 
+                asChild 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
+              >
                 <Link to="/report">
                   Report Corruption
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent">
+              <Button 
+                asChild 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
+              >
                 <Link to="/budget">
                   Track Budget
                 </Link>
