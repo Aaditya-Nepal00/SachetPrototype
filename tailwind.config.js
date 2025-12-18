@@ -21,7 +21,7 @@ export default {
           foreground: "hsl(var(--secondary-foreground))",
         },
         accent: {
-          DEFAULT: "#DC2626",
+          DEFAULT: "#1E3A8A",
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {

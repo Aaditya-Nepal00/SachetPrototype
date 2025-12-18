@@ -21,6 +21,8 @@ export function Landing() {
           loop
           muted
           playsInline
+          preload="auto"
+          {...{ fetchpriority: "high" } as any}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/heropage/HeroVideo.mp4" type="video/mp4" />
@@ -44,7 +46,7 @@ export function Landing() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
               A Modern Transparency Platform
             </h1>
-            
+
             {/* Subtitle */}
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/90 mb-4 md:mb-6 drop-shadow-md">
               for Nepali Governance
@@ -52,35 +54,35 @@ export function Landing() {
 
             {/* Description */}
             <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 md:mb-10 drop-shadow-md px-4">
-              Empowering citizens with real-time project tracking, budget transparency, 
+              Empowering citizens with real-time project tracking, budget transparency,
               and anonymous corruption reporting. Building trust through accountability.
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 px-4">
-              <Button 
-                asChild 
-                size="lg" 
+              <Button
+                asChild
+                size="lg"
                 className="bg-white text-[#1E3A8A] hover:bg-blue-50 border-0 shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
               >
                 <Link to="/projects">
                   Explore Projects <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
               >
                 <Link to="/report">
                   Report Corruption
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A8A] bg-transparent shadow-lg hover:shadow-xl transition-all text-sm sm:text-base px-6 py-6 md:px-8 md:py-6"
               >
                 <Link to="/budget">

@@ -78,7 +78,7 @@ export function Laws() {
   const [language, setLanguage] = useState<"en" | "ne">("en")
 
   const filteredLaws = laws.filter((law) => {
-    const matchesSearch = language === "en" 
+    const matchesSearch = language === "en"
       ? law.title.toLowerCase().includes(searchTerm.toLowerCase()) || law.summary.toLowerCase().includes(searchTerm.toLowerCase())
       : law.titleNepali.includes(searchTerm) || law.summaryNepali.includes(searchTerm)
     const matchesCategory = categoryFilter === "all" || law.category.toLowerCase() === categoryFilter
@@ -166,7 +166,7 @@ export function Laws() {
                 <CardDescription className="line-clamp-3">
                   {language === "en" ? law.summary : law.summaryNepali}
                 </CardDescription>
-                <Button variant="ghost" className="mt-4 w-full">
+                <Button variant="outline" className="mt-4 w-full hover:bg-primary hover:text-white transition-all duration-300">
                   Read More →
                 </Button>
               </CardContent>
@@ -186,7 +186,7 @@ export function Laws() {
                   <Badge>{selectedLaw.category}</Badge>
                 </DialogDescription>
               </DialogHeader>
-              
+
               <Tabs defaultValue="summary" className="mt-4">
                 <TabsList>
                   <TabsTrigger value="summary">
