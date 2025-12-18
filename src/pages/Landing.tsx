@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Shield, Eye, CheckCircle, TrendingUp } from "lucide-react"
 import { useEffect, useRef } from "react"
-import videoSrc from "@/assets/HeroVideo.mp4"
 
 export function Landing() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -15,10 +14,26 @@ export function Landing() {
   ]
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.error("Video playback failed:", error)
-      })
+    const video = videoRef.current
+    if (video) {
+      // Force attributes programmatically to satisfy aggressive browsers
+      video.muted = true
+      video.defaultMuted = true
+      video.setAttribute("muted", "")
+      video.setAttribute("playsinline", "")
+
+      const handlePlay = () => {
+        video.play().catch((error) => {
+          console.error("Video playback failed on interaction/load:", error)
+        })
+      }
+
+      // Try playing immediately
+      handlePlay()
+
+      // Also listen for metadata load as a backup trigger
+      video.addEventListener("loadedmetadata", handlePlay)
+      return () => video.removeEventListener("loadedmetadata", handlePlay)
     }
   }, [])
 
@@ -37,7 +52,7 @@ export function Landing() {
           {...({ fetchpriority: "high" } as any)}
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src="/heropage/sachet-bg-main.mp4" type="video/mp4" />
           {/* Fallback gradient if video doesn't load */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A] via-[#2563EB] to-[#3B82F6]"></div>
         </video>
